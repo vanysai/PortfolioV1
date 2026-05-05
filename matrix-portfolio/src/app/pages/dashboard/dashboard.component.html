@@ -1,0 +1,100 @@
+<div class="flex min-h-screen bg-black text-green-400">
+
+  <!-- SIDEBAR -->
+  <app-sidebar (navigate)="setSection($event)"></app-sidebar>
+
+  <!-- CONTEÚDO -->
+  <div class="flex-1 p-10 relative z-10">
+
+    <!-- HEADER -->
+    <div class="mb-10">
+      <h1 class="text-4xl font-bold">
+        Jaiza.exe
+      </h1>
+      <p class="text-gray-500 text-sm mt-2">
+        system status: online
+      </p>
+    </div>
+
+    <!-- HOME (TERMINAL) -->
+    <div [hidden]="section !== 'home'">
+      <app-terminal (navigate)="setSection($event)"></app-terminal>
+    </div>
+
+    <!-- PROJECTS -->
+    <div *ngIf="section === 'projects'" class="animated-fade">
+
+      <div class="p-6 border border-green-900 rounded-lg 
+                  hover:shadow-[0_0_20px_#00ff9f] 
+                  transition cursor-pointer">
+        <h3 class="text-green-300 text-lg">Portfolio Matrix</h3>
+        <p class="text-gray-500 text-sm mt-2">
+          Angular + Tailwind UI futurista
+        </p>
+      </div>
+
+      <div class="p-6 border border-green-900 rounded-lg 
+                  hover:shadow-[0_0_20px_#00ff9f] 
+                  transition cursor-pointer">
+        <h3 class="text-green-300 text-lg">API Clínica</h3>
+        <p class="text-gray-500 text-sm mt-2">
+          Backend com Node.js
+        </p>
+      </div>
+
+    </div>
+
+    <!-- SKILLS -->
+    <div *ngIf="section === 'skills'" class="space-y-6">
+
+      <div class="border border-green-900 p-4 rounded">
+        Angular
+        <div class="w-full bg-gray-800 h-2 mt-2">
+          <div class="bg-green-400 h-2 w-[85%]"></div>
+        </div>
+      </div>
+
+      <div class="border border-green-900 p-4 rounded">
+        Tailwind
+        <div class="w-full bg-gray-800 h-2 mt-2">
+          <div class="bg-green-400 h-2 w-[90%]"></div>
+        </div>
+      </div>
+
+      <div class="border border-green-900 p-4 rounded">
+        JavaScript
+        <div class="w-full bg-gray-800 h-2 mt-2">
+          <div class="bg-green-400 h-2 w-[80%]"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CONTACT -->
+    <div *ngIf="section === 'contact'" class="space-y-4 max-w-md">
+
+      <input
+        placeholder="Seu nome"
+        class="w-full p-2 bg-black border border-green-900 outline-none focus:border-green-400"
+      />
+
+      <input
+        placeholder="Email"
+        class="w-full p-2 bg-black border border-green-900 outline-none focus:border-green-400"
+      />
+
+      <textarea
+        placeholder="Mensagem"
+        class="w-full p-2 bg-black border border-green-900 outline-none focus:border-green-400"
+      ></textarea>
+
+      <button
+        class="px-4 py-2 border border-green-400 hover:bg-green-400 hover:text-black transition">
+        Enviar
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

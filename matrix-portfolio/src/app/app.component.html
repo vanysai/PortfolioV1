@@ -1,0 +1,13 @@
+<canvas
+  id="matrixCanvas"
+  class="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
+</canvas>
+
+<app-hero 
+  *ngIf="!entered" 
+  (onEnter)="enterSystem()">
+</app-hero>
+
+<div *ngIf="entered" class="animate-fade">
+  <app-dashboard></app-dashboard>
+</div>
