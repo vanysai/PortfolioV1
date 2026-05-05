@@ -75,10 +75,10 @@ body {
   z-index: -1;
   background: black;
 }
-
 .glitch {
   position: relative;
   color: #00ff9f;
+  font-weight: bold;
 }
 
 .glitch::before,
@@ -86,36 +86,30 @@ body {
   content: attr(data-text);
   position: absolute;
   left: 0;
-  width: 100%;
 }
 
 .glitch::before {
-  animation: glitchTop 1s infinite;
+  animation: glitchTop 1s infinite linear alternate-reverse;
   color: #00ff9f;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
 }
 
 .glitch::after {
-  animation: glitchBottom 1s infinite;
+  animation: glitchBottom 1s infinite linear alternate-reverse;
   color: #00ff9f;
+  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
 }
 
 @keyframes glitchTop {
   0% { transform: translate(0); }
-  20% { transform: translate(-2px, -2px); }
-  40% { transform: translate(2px, 2px); }
-  60% { transform: translate(-2px, 2px); }
-  80% { transform: translate(2px, -2px); }
-  100% { transform: translate(0); }
+  100% { transform: translate(2px, -2px); }
 }
 
 @keyframes glitchBottom {
   0% { transform: translate(0); }
-  20% { transform: translate(2px, 2px); }
-  40% { transform: translate(-2px, -2px); }
-  60% { transform: translate(2px, -2px); }
-  80% { transform: translate(-2px, 2px); }
-  100% { transform: translate(0); }
+  100% { transform: translate(-2px, 2px); }
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -129,4 +123,12 @@ body {
 
 .animate-fade {
   animation: fadeIn 0.8s ease-out;
+}
+.typing-line {
+  border-right: 2px solid #00ff9f;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
 }
