@@ -1,135 +1,114 @@
-<div class="flex min-h-screen text-green-400">
-
-  <!-- SIDEBAR -->
+<div class="np-dashboard">
   <app-sidebar (navigate)="setSection($event)"></app-sidebar>
 
-  <!-- CONTEÚDO -->
-  <div class="flex-1 p-10 relative z-10 bg-black/70 backdrop-blur-sm">
-
-    <!-- HEADER -->
-    <div class="mb-10">
-      <h1 class="text-4xl font-bold glitch" data-text="Jaiza.exe">
-        Jaiza.exe
-      </h1>
-
-      <p class="text-green-500 mt-2 text-sm opacity-80">
-        > building systems, not just interfaces_
-      </p>
+  <main class="np-main">
+    <div class="np-topbar">
+      <span>NIGHT<span class="np-accent">//</span>PROTOCOL</span>
+      <span class="np-online"><i></i> SYSTEM ONLINE</span>
+      <span class="np-location">FLORIANÓPOLIS / BR</span>
     </div>
 
-    <!-- HOME (TERMINAL) -->
-    <div [hidden]="section !== 'home'">
-      <app-terminal (navigate)="setSection($event)"></app-terminal>
-    </div>
-
-    <!-- PROJECTS -->
-    <div *ngIf="section === 'projects'" class="grid md:grid-cols-2 gap-6">
-
-      <div class="p-6 border border-green-900 rounded-lg 
-                  hover:shadow-[0_0_25px_#00ff9f] 
-                  hover:-translate-y-1 
-                  transition duration-300">
-
-        <h3 class="text-green-300 text-lg">Portfolio Matrix</h3>
-        <p class="text-gray-400 text-sm mt-2">
-          Angular + Tailwind + UI futurista
+    <section *ngIf="section === 'home'" class="np-hero">
+      <div class="np-hero-copy">
+        <p class="np-eyebrow">PERSONAL ARCHIVE / 001</p>
+        <p class="np-kicker">INDEPENDENT DEVELOPER · DIGITAL EXPLORER</p>
+        <h1>Jaiza<span>.exe</span></h1>
+        <p class="np-intro">
+          Construindo meu espaço entre código, tecnologia e experiências digitais.
         </p>
+        <p class="np-terminal-line">&gt; building systems, not just interfaces_</p>
+
+        <button class="np-cta" (click)="setSection('projects')">
+          EXPLORAR PROJETOS <span>↗</span>
+        </button>
+
+        <div class="np-hero-meta">
+          <span>CREATIVE TECHNOLOGY</span>
+          <span>STATUS: IN DEVELOPMENT</span>
+        </div>
       </div>
 
-      <div class="p-6 border border-green-900 rounded-lg 
-                  hover:shadow-[0_0_25px_#00ff9f] 
-                  hover:-translate-y-1 
-                  transition duration-300">
-
-        <h3 class="text-green-300 text-lg">API Clínica</h3>
-        <p class="text-gray-400 text-sm mt-2">
-          Node.js + Express
-        </p>
+      <div class="np-city-panel" role="img" aria-label="Painel visual reservado para a cidade futurista">
+        <div class="np-city-grid"></div>
+        <div class="np-city-sun"></div>
+        <div class="np-building building-one"></div>
+        <div class="np-building building-two"></div>
+        <div class="np-building building-three"></div>
+        <div class="np-building building-four"></div>
+        <div class="np-city-scan"></div>
+        <span class="np-city-label">FIG. 001 / NIGHT CITY</span>
+        <span class="np-city-coordinates">LAT 27°35' · DIGITAL FRONTIER</span>
+        <span class="np-city-index">N//P</span>
       </div>
 
-    </div>
+      <div class="np-bottom-strip">
+        <span>DESIGNED FOR THE UNSEEN.</span>
+        <span>ANGULAR / TYPESCRIPT / CREATIVE CODE</span>
+        <span>© NIGHT//PROTOCOL</span>
+      </div>
+    </section>
 
-    <!-- SKILLS -->
-   <div *ngIf="section === 'skills'" class="space-y-6 max-w-xl">
+    <section *ngIf="section === 'projects'" class="np-section">
+      <p class="np-eyebrow">02 / ARCHIVE DATABASE</p>
+      <h1>Selected<span class="np-accent">.projects</span></h1>
+      <p class="np-section-intro">Projetos, experimentos e sistemas em desenvolvimento.</p>
 
-  <div class="border border-green-900 p-4 rounded hover:shadow-[0_0_15px_#00ff9f] transition">
-    <h3 class="text-green-300 font-bold">Frontend Development</h3>
-    <p class="text-sm text-gray-400 mt-2">
-      Desenvolvimento de interfaces modernas com Angular, foco em performance, organização de componentes e experiência do usuário.
-    </p>
-  </div>
+      <div class="np-project-grid">
+        <article class="np-project" *ngFor="let project of projects">
+          <div class="np-project-top">
+            <span>{{ project.code }}</span>
+            <span class="np-status">{{ project.status }}</span>
+          </div>
+          <div class="np-project-art">
+            <span>{{ project.id === 'night-protocol' ? 'N//P' : 'API_02' }}</span>
+            <div class="np-art-line"></div>
+          </div>
+          <h2>{{ project.title }}</h2>
+          <p>{{ project.description }}</p>
+          <div class="np-tags">
+            <span *ngFor="let tech of project.technologies">{{ tech }}</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-  <div class="border border-green-900 p-4 rounded hover:shadow-[0_0_15px_#00ff9f] transition">
-    <h3 class="text-green-300 font-bold">Networking & Cybersecurity</h3>
-    <p class="text-sm text-gray-400 mt-2">
-      Estudos em infraestrutura de redes, protocolos de comunicação e práticas de segurança digital para proteção de dados e sistemas.
-    </p>
-  </div>
+    <section *ngIf="section === 'skills'" class="np-section">
+      <p class="np-eyebrow">03 / TECHNICAL PROFILE</p>
+      <h1>System<span class="np-accent">.capabilities</span></h1>
+      <p class="np-section-intro">Ferramentas e áreas que fazem parte da minha jornada.</p>
 
-  <div class="border border-green-900 p-4 rounded hover:shadow-[0_0_15px_#00ff9f] transition">
-    <h3 class="text-green-300 font-bold">UI/UX Design</h3>
-    <p class="text-sm text-gray-400 mt-2">
-      Criação de interfaces intuitivas, responsivas e visualmente impactantes, priorizando usabilidade e estética.
-    </p>
-  </div>
+      <div class="np-skill-list">
+        <article class="np-skill" *ngFor="let skill of skills">
+          <span class="np-skill-code">{{ skill.code }}</span>
+          <div>
+            <h2>{{ skill.title }}</h2>
+            <p>{{ skill.technologies }}</p>
+          </div>
+          <span class="np-skill-symbol">↗</span>
+        </article>
+      </div>
+    </section>
 
-  <div class="border border-green-900 p-4 rounded hover:shadow-[0_0_15px_#00ff9f] transition">
-    <h3 class="text-green-300 font-bold">Backend & APIs</h3>
-    <p class="text-sm text-gray-400 mt-2">
-      Desenvolvimento de APIs com Node.js, integração com bancos de dados e organização de lógica de negócio.
-    </p>
-  </div>
+    <section *ngIf="section === 'contact'" class="np-section">
+      <p class="np-eyebrow">04 / ESTABLISH CONNECTION</p>
+      <h1>Let's <span class="np-accent">connect.</span></h1>
+      <p class="np-section-intro">Ideias interessantes começam com uma conexão.</p>
 
-  <div class="border border-green-900 p-4 rounded hover:shadow-[0_0_15px_#00ff9f] transition">
-    <h3 class="text-green-300 font-bold">Soft Skills</h3>
-    <p class="text-sm text-gray-400 mt-2">
-      Comunicação clara, aprendizado rápido, adaptabilidade e foco na resolução de problemas.
-    </p>
-  </div>
+      <div class="np-connection-list">
+        <a *ngFor="let connection of connections"
+           [href]="connection.url"
+           target="_blank"
+           rel="noopener noreferrer">
+          <span class="np-connection-code">{{ connection.code }}</span>
+          <span class="np-connection-name">{{ connection.label }}<small>{{ connection.detail }}</small></span>
+          <span class="np-connection-arrow">↗</span>
+        </a>
+      </div>
+    </section>
 
-</div>
-
-    <!-- CONTACT -->
-   <div *ngIf="section === 'contact'" class="space-y-6 max-w-md">
-
-  <p class="text-green-400 text-lg">
-    Vamos construir algo incrível juntos.
-  </p>
-
-  <!-- LINKEDIN -->
-    <a href="https://linkedin.com/in/jaiza-freire-vn"
-     target="_blank"
-     class="block p-4 border border-green-900 rounded 
-            hover:bg-green-400 hover:text-black transition">
-
-    <h3 class="font-bold">LinkedIn</h3>
-    <p class="text-sm opacity-70">
-      Conecte-se comigo profissionalmente
-    </p>
-  </a>
-
-  <!-- GITHUB -->
-  <a href="https://github.com/vanysai"
-     target="_blank"
-     class="block p-4 border border-green-900 rounded 
-            hover:bg-green-400 hover:text-black transition">
-
-    <h3 class="font-bold">GitHub</h3>
-    <p class="text-sm opacity-70">
-      Veja meus projetos e códigos!
-    </p>
-  </a>
-
-  <!-- EMAIL -->
-  <a href="mailto:jaizamsf@gmail.com"
-     class="block p-4 border border-green-900 rounded 
-            hover:bg-green-400 hover:text-black transition">
-
-    <h3 class="font-bold">Email</h3>
-    <p class="text-sm opacity-70">
-      Entre em contato direto!
-    </p>
-  </a>
-
-</div>
+    <footer class="np-footer">
+      <span>NIGHT//PROTOCOL — PERSONAL ARCHIVE</span>
+      <span>END OF TRANSMISSION_</span>
+    </footer>
+  </main>
 </div>

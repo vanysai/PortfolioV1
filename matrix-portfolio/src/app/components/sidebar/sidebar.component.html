@@ -1,16 +1,70 @@
-<div class="w-60 min-h-screen border-r border-green-900 bg-black/60">
 
-  <div class="p-6 border-b border-green-900">
-    <h2 class="text-green-400 tracking-widest text-xl">SYSTEM</h2>
+<aside class="np-sidebar">
+
+  <!-- IDENTIDADE -->
+  <div class="np-brand">
+    <div class="np-brand-mark">N<span>//</span>P</div>
+    <div class="np-brand-name">
+      <strong>NIGHT</strong>
+      <span>PROTOCOL v1.0</span>
+    </div>
   </div>
 
-  <ul class="p-6 space-y-6 text-sm">
+  <!-- STATUS -->
+  <div class="np-system-status">
+    <span class="np-status-dot"></span>
+    <span>LOCAL SYSTEM</span>
+    <span class="np-status-code">01</span>
+  </div>
 
-    <li (click)="go('home')">home</li>
-    <li (click)="go('projects')">projects</li>
-    <li (click)="go('skills')">skills</li>
-    <li (click)="go('contact')">contact</li>
+  <!-- NAVEGAÇÃO -->
+  <nav class="np-navigation" aria-label="Navegação principal">
 
-  </ul>
+    <p class="np-nav-label">MAINFRAME</p>
 
-</div>
+    <button type="button" class="np-nav-item"
+            [class.active]="activeSection === 'home'"
+            (click)="go('home')">
+      <span class="np-nav-index">01</span>
+      <span class="np-nav-icon">⌂</span>
+      <span class="np-nav-text">Overview</span>
+      <span class="np-nav-arrow">↗</span>
+    </button>
+
+    <button type="button" class="np-nav-item"
+            [class.active]="activeSection === 'projects'"
+            (click)="go('projects')">
+      <span class="np-nav-index">02</span>
+      <span class="np-nav-icon">▧</span>
+      <span class="np-nav-text">Projects</span>
+      <span class="np-nav-arrow">↗</span>
+    </button>
+
+    <button type="button" class="np-nav-item"
+            [class.active]="activeSection === 'skills'"
+            (click)="go('skills')">
+      <span class="np-nav-index">03</span>
+      <span class="np-nav-icon">⌘</span>
+      <span class="np-nav-text">Capabilities</span>
+      <span class="np-nav-arrow">↗</span>
+    </button>
+
+    <button type="button" class="np-nav-item"
+            [class.active]="activeSection === 'contact'"
+            (click)="go('contact')">
+      <span class="np-nav-index">04</span>
+      <span class="np-nav-icon">⌁</span>
+      <span class="np-nav-text">Connections</span>
+      <span class="np-nav-arrow">↗</span>
+    </button>
+
+  </nav>
+
+  <!-- RODAPÉ DA SIDEBAR -->
+  <div class="np-sidebar-footer">
+    <div class="np-footer-line"></div>
+    <span>DESIGNED FOR THE UNSEEN.</span>
+    <strong>FLORIANÓPOLIS / BR</strong>
+  </div>
+
+</aside>
