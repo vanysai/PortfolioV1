@@ -1,4 +1,16 @@
 
-<div style="background: #0b0c10; min-height: 100vh; color: #55e6e0; padding: 40px;">
-  TESTE NIGHT//PROTOCOL
+<canvas
+  #matrixCanvas
+  class="ambient-canvas"
+  aria-hidden="true">
+</canvas>
+
+<div class="app-shell">
+  <app-hero
+    *ngIf="!entered"
+    (onEnter)="enterSystem()">
+  </app-hero>
+
+  <app-dashboard *ngIf="entered"></app-dashboard>
 </div>
+

@@ -3,7 +3,7 @@
   display: block;
   min-height: 100vh;
 }
-
+  
 .boot-screen {
   position: relative;
   display: flex;
@@ -11,19 +11,32 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
+  isolation: isolate;
+
   padding: clamp(1.25rem, 4vw, 3.5rem);
-  background:
-    radial-gradient(
-      ellipse at 72% 45%,
-      rgb(255 46 136 / 7%),
-      transparent 42%
+
+  background-color: #0b0c10;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(8, 9, 14, 0.88) 0%,
+      rgba(8, 9, 14, 0.68) 34%,
+      rgba(8, 9, 14, 0.25) 68%,
+      rgba(8, 9, 14, 0.12) 100%
     ),
     linear-gradient(
-      135deg,
-      rgb(11 12 16 / 95%),
-      rgb(11 12 16 / 76%)
-    );
+      0deg,
+      rgba(8, 9, 14, 0.72) 0%,
+      transparent 38%,
+      rgba(8, 9, 14, 0.20) 100%
+    ),
+    url('/images/night-city.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
 
 .boot-screen::after {
   position: absolute;
@@ -101,12 +114,17 @@
   margin-bottom: 1.5rem;
 }
 
+
 .boot-title {
+  position: relative;
   margin: 0;
   font-size: clamp(3.5rem, 10vw, 8.5rem);
   font-weight: 700;
-  letter-spacing: -0.085em;
+  letter-spacing: -0.06em;
   line-height: 0.91;
+  text-shadow:
+    0 2px 18px rgba(0, 0, 0, 0.55),
+    0 0 28px rgba(255, 46, 136, 0.08);
 }
 
 .boot-title-outline {
@@ -132,12 +150,29 @@
 .boot-divider > span:last-child {
   height: 1px;
   flex: 1;
-  background: var(--border-subtle);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 46, 136, 0.48),
+    rgba(85, 230, 224, 0.18)
+  );
+}
+
+.boot-divider > span:last-child {
+  background: linear-gradient(
+    90deg,
+    rgba(85, 230, 224, 0.18),
+    rgba(255, 46, 136, 0.48),
+    transparent
+  );
 }
 
 .boot-divider .technical-label {
   white-space: nowrap;
   font-size: 0.65rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 10px rgba(255, 46, 136, 0.12);
 }
 
 .boot-button {
@@ -212,7 +247,9 @@
     padding: 1.25rem;
   }
 
-  .boot-topline,
+  .boot-topline {
+    flex-wrap: wrap;
+  }
   .boot-footer {
     font-size: 0.56rem;
   }
@@ -222,9 +259,11 @@
   }
 
   .boot-content {
-    margin: 4rem auto;
+    width:100%;
   }
-
+  .boot-description {
+    line-height: 1.65;
+  }
   .boot-index {
     gap: 0.5rem;
     margin-bottom: 3rem;
@@ -256,5 +295,95 @@
   .boot-button,
   .boot-button-arrow {
     transition: none;
+  }
+}
+
+/* NIGHT//PROTOCOL — interação do botão ENTER */
+
+.boot-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #111116;
+  border: 1px solid rgba(255, 46, 136, 0.65);
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.boot-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    110deg,
+    rgba(255, 46, 136, 0.16),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+
+.boot-button:hover {
+  background-color: #171019;
+  border-color: #ff2e88;
+  box-shadow:
+    0 0 12px rgba(255, 46, 136, 0.18),
+    inset 0 0 12px rgba(255, 46, 136, 0.06);
+  transform: translateY(-2px);
+}
+
+.boot-button:hover::before {
+  opacity: 1;
+}
+
+.boot-button:active {
+  transform: translateY(0);
+  box-shadow: inset 0 0 12px rgba(255, 46, 136, 0.12);
+}
+
+.boot-button:focus-visible {
+  outline: 2px solid #55e6e0;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-button,
+  .boot-button::before {
+    transition: none;
+  }
+
+  .boot-button:hover,
+  .boot-button:active {
+    transform: none;
+  }
+}
+
+
+/* NIGHT//PROTOCOL — indicador de sistema */
+
+.status-dot {
+  animation: system-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes system-pulse {
+  0%, 100% {
+    opacity: 0.65;
+    box-shadow: 0 0 4px rgba(85, 230, 224, 0.25);
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 9px rgba(85, 230, 224, 0.65);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot {
+    animation: none;
   }
 }
