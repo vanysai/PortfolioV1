@@ -1,13 +1,60 @@
-<div class="flex flex-col items-center justify-center min-h-screen bg-black text-green-400 relative z-10">
 
-  <h1 class="text-6xl font-bold tracking-widest">WAKE UP, PLAYER</h1>
+<main class="boot-screen">
+  <div class="boot-topline">
+    <span class="technical-label">NIGHT//PROTOCOL</span>
+    <span class="boot-status">
+      <span class="status-dot"></span>
+      SYSTEM STANDBY
+    </span>
+  </div>
 
-  <p class="mt-4 text-gray-500">The system is waiting for you...</p>
+  <section class="boot-content" aria-labelledby="boot-title">
+    <div class="boot-index">
+      <span>Desenvolvedora de Sistemas - Hacking </span>
+      <span>FLORIANÓPOLIS · BR</span>
+    </div>
 
-  <button 
-    (click)="enter()"
-    class="mt-10 px-6 py-2 border border-green-400 hover:bg-green-400 hover:text-black transition">
-    ENTER MATRIX
-  </button>
+    <p class="boot-eyebrow">
+      <span class="accent-pink">[ 2077 / SYS.INIT ]</span>
+      CONNECTION ESTABLISHED
+    </p>
 
-</div>
+    <h1 id="boot-title" class="boot-title">
+      WAKE UP<span class="accent-pink">,</span>
+      <br />
+      <span class="boot-title-outline">PLAYER.</span>
+    </h1>
+
+    <p class="boot-description">
+      A cidade nunca dorme
+      <br />
+      Nem a curiosidade.
+    </p>
+
+    <div class="boot-divider">
+      <span></span>
+      <span class="technical-label">ARQUIVO PESSOAL / 001</span>
+      <span></span>
+    </div>
+
+    <button
+      type="button"
+      class="boot-button"
+      (click)="enter()">
+      <span class="boot-button-prefix">[ ENTER ]</span>
+      <span>INICIALIZANDO SISTEMA</span>
+      <span class="boot-button-arrow" aria-hidden="true">↗</span>
+    </button>
+
+    <p class="boot-hint">
+      <span class="accent-yellow">NOTE:</span>
+      Entre por sua conta e risco.
+    </p>
+  </section>
+
+  <footer class="boot-footer">
+    <span>DESIGNED FOR THE UNSEEN.</span>
+    <span class="boot-footer-center">NO SIGNAL IS NEUTRAL.</span>
+    <span>JAIZA — PORTFOLIO </span>
+  </footer>
+</main>

@@ -1,0 +1,260 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.boot-screen {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: clamp(1.25rem, 4vw, 3.5rem);
+  background:
+    radial-gradient(
+      ellipse at 72% 45%,
+      rgb(255 46 136 / 7%),
+      transparent 42%
+    ),
+    linear-gradient(
+      135deg,
+      rgb(11 12 16 / 95%),
+      rgb(11 12 16 / 76%)
+    );
+}
+
+.boot-screen::after {
+  position: absolute;
+  top: 12%;
+  right: -8%;
+  width: min(45vw, 560px);
+  aspect-ratio: 1;
+  border: 1px solid rgb(255 46 136 / 13%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 42px rgb(255 46 136 / 2%),
+    0 0 0 84px rgb(255 46 136 / 2%);
+  content: "";
+  pointer-events: none;
+}
+
+.boot-topline,
+.boot-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+}
+
+.boot-topline {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.boot-status {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--text-secondary);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--acid-yellow);
+  box-shadow: 0 0 12px rgb(248 240 90 / 45%);
+}
+
+.boot-content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 900px);
+  margin: 5rem auto;
+}
+
+.boot-index,
+.boot-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+}
+
+.boot-index {
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+
+.boot-eyebrow {
+  margin-bottom: 1.5rem;
+}
+
+.boot-title {
+  margin: 0;
+  font-size: clamp(3.5rem, 10vw, 8.5rem);
+  font-weight: 700;
+  letter-spacing: -0.085em;
+  line-height: 0.91;
+}
+
+.boot-title-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-primary);
+}
+
+.boot-description {
+  margin-top: 2rem;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.8;
+}
+
+.boot-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+
+.boot-divider > span:first-child,
+.boot-divider > span:last-child {
+  height: 1px;
+  flex: 1;
+  background: var(--border-subtle);
+}
+
+.boot-divider .technical-label {
+  white-space: nowrap;
+  font-size: 0.65rem;
+}
+
+.boot-button {
+  display: inline-flex;
+  min-height: 58px;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.9rem 1.3rem;
+  border: 1px solid var(--neon-pink);
+  background: rgb(255 46 136 / 5%);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.boot-button-prefix {
+  color: var(--neon-pink);
+}
+
+.boot-button-arrow {
+  color: var(--acid-yellow);
+  font-size: 1.1rem;
+  transition: transform 180ms ease;
+}
+
+.boot-button:hover {
+  background: var(--neon-pink);
+  color: var(--bg-main);
+  box-shadow: 0 0 28px rgb(255 46 136 / 16%);
+}
+
+.boot-button:hover .boot-button-prefix,
+.boot-button:hover .boot-button-arrow {
+  color: var(--bg-main);
+}
+
+.boot-button:hover .boot-button-arrow {
+  transform: translate(2px, -2px);
+}
+
+.boot-button:focus-visible {
+  outline: 2px solid var(--signal-cyan);
+  outline-offset: 5px;
+}
+
+.boot-hint {
+  margin-top: 1.2rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.boot-footer {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.6rem;
+}
+
+.boot-footer-center {
+  color: var(--neon-pink);
+}
+
+@media (max-width: 600px) {
+  .boot-screen {
+    padding: 1.25rem;
+  }
+
+  .boot-topline,
+  .boot-footer {
+    font-size: 0.56rem;
+  }
+
+  .boot-footer-center {
+    display: none;
+  }
+
+  .boot-content {
+    margin: 4rem auto;
+  }
+
+  .boot-index {
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    font-size: 0.62rem;
+  }
+
+  .boot-title {
+    font-size: clamp(3.2rem, 14vw, 5.5rem);
+  }
+
+  .boot-divider {
+    gap: 0.6rem;
+  }
+
+  .boot-divider .technical-label {
+    font-size: 0.55rem;
+  }
+
+  .boot-button {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-inline: 0.85rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-button,
+  .boot-button-arrow {
+    transition: none;
+  }
+}
